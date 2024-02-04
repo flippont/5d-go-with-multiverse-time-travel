@@ -58,7 +58,7 @@ invalidMove = (board, x, y) => {
 	if(board[x][y] != 0 && getLiberties(board, x, y) === 0) {
 		return 0;
 	}
-    resetCheckBoard();
+	resetCheckBoard();
 	return 1;
 }
 
@@ -80,7 +80,7 @@ getLiberties = (board, x, y) => {
 	if(checkBoard[x][y] === 1)
 		return 0;
 
-    checkBoard[x][y] = 1
+    	checkBoard[x][y] = 1
 
 	var count = 0;
 	for(var i = 0; i < directs.length; i++) {
@@ -102,34 +102,34 @@ getLiberties = (board, x, y) => {
 
 
 newBoard = (row, collumn, data) => {
-    // need to update this so the row is updated along side it.
-
+	
+    // need to update this whole function so the row is updated along side it.
     if(triggered == true){ return false}
-
+    
 	present = (present == 1) ? 2 : 1
-    entities.sort((a, b) => {
-        return a.row - b.row
-    })
-    let sameTime = [];
-    for(let i=0; i < entities.length; i++) {
-        if(entities[i].collumn == collumn + 1) {
-            sameTime.push(i)
-        }
-        if(i == entities.length - 1) {
-            if(sameTime.length > 0) {
-                console.log(sameTime)
-                if(sameTime.length % 2 == 0) {
-                    entities.push(new Board(collumn + 1, (sameTime.length) / 2, data));
-                } else {
-                    entities.push(new Board(collumn + 1, (-1 * (sameTime.length + 1) / 2), data));
-                }
-                triggered = true
-                return false;
-            } else {
-                entities.push(new Board(collumn + 1, 0, data))
-                triggered = true
-                return false;
-            }
-        }
-    }
+	entities.sort((a, b) => {
+		return a.row - b.row
+	})
+	let sameTime = [];
+	for(let i=0; i < entities.length; i++) {
+	if(entities[i].collumn == collumn + 1) {
+		sameTime.push(i)
+	}
+	if(i == entities.length - 1) {
+	    if(sameTime.length > 0) {
+		console.log(sameTime)
+		if(sameTime.length % 2 == 0) {
+			entities.push(new Board(collumn + 1, (sameTime.length) / 2, data));
+		} else {
+            entities.push(new Board(collumn + 1, (-1 * (sameTime.length + 1) / 2), data));
+		}
+		triggered = true
+		return false;
+	    } else {
+    		entities.push(new Board(collumn + 1, 0, data))
+    		triggered = true
+    		return false;
+	    }
+	}
+	}
 }
