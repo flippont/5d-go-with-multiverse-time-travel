@@ -33,13 +33,12 @@ class Board {
         ctx.fillStyle = '#f0d9b5'
         ctx.lineWidth = 1;
         ctx.strokeStyle = '#000'
-
-
     
         ctx.translate(digestedCollumn, digestedRow)
         ctx.fillRect(0, 0, this.size, this.size)
         ctx.strokeRect(0, 0, this.size, this.size)
 
+        // Draw grid
         ctx.beginPath()
         let sides = this.size / (boardSize + 2);
         let gridSize = (this.size - sides * 2) / (boardSize - 1);
@@ -67,6 +66,8 @@ class Board {
                     }
                 }
                 if(this.data[i][j] != 0) {
+
+                    // Draw stones
                     ctx.beginPath()
                     ctx.fillStyle = (this.data[i][j] % 2 == 0) ? '#fff' : '#000'
                     ctx.arc(sides + j * gridSize, sides + i * gridSize, gridSize / 2 - 1, 0, Math.PI * 2)
@@ -74,32 +75,34 @@ class Board {
                     ctx.closePath()
                 } else {
                     if(this.hovered.x == i && this.hovered.y == j && this.hovering) {
+
+                        // Copy board and precalculate taken stones
                         let newData = JSON.stringify(this.data)
                         newData = JSON.parse(newData);
-                        newData[i][j] = (present == 1) ? 2 : 1;
                         resetCheckBoard();
+                        newData[i][j] = (present == 1) ? 2 : 1;
                         clearTaken(newData)
 
                         if(invalidMove(newData, i, j) == 1 && !invalidBoard(newData, backup)) {
+
+                            // draw preview
                             ctx.beginPath()
                             ctx.fillStyle = (present == 2)?'#00000080':'#FFFFFF80'
                             ctx.arc(sides + j * gridSize, sides + i * gridSize, gridSize / 2 - 1, 0, Math.PI * 2)
                             ctx.fill()
                             ctx.closePath()
+
+                            // Mouse down
                             if(MOUSE_DOWN) {
                                 copyBoard(backup, this.data);
-                                let new_data = JSON.stringify(this.data)
-                                new_data = JSON.parse(new_data)
-                                if(!triggered) {
-                                    present = (present == 1) ? 2 : 1
-                                }
-                                new_data[i][j] = present
-                                newBoard(this.row, this.collumn, new_data)
+                                newBoard(this.row, this.collumn, newData)
                                 triggered = true;
                             } else {
                                 triggered = false;
                             }
                         } else {
+
+                            // draw preview 
                             ctx.beginPath()
                             ctx.fillStyle = '#ff000080'
                             ctx.arc(sides + j * gridSize, sides + i * gridSize, gridSize / 2 - 1, 0, Math.PI * 2)
