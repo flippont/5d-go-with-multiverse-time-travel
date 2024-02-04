@@ -1,5 +1,5 @@
 # 5D Go With Multiverse Time Travel
-Based on [Go/Baduk](https://en.wikipedia.org/wiki/Go_(game)) and [5D Chess With Multiverse Time Travel](https://en.wikipedia.org/wiki/5D_Chess_with_Multiverse_Time_Travel), 5D Go With Multiverse Time Travel is a recreation of the skill based strategy board game "Go". I took [this video](https://www.youtube.com/watch?v=2__NGeY5JUw) for inspiration, although my version is much dummer than what Oliver Lugg did.
+Based on [Go/Baduk](https://en.wikipedia.org/wiki/Go_(game)) and [5D Chess With Multiverse Time Travel](https://en.wikipedia.org/wiki/5D_Chess_with_Multiverse_Time_Travel), 5D Go With Multiverse Time Travel is a recreation of the skill based strategy board game "Go". I took [this video](https://www.youtube.com/watch?v=2__NGeY5JUw) for inspiration, although my version is much dumber than what Oliver Lugg did.
 
 ### Disclaimer
 
