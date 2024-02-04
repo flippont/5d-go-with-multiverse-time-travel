@@ -19,7 +19,7 @@ Go to [github pages](https://flippont.github.io/5d-go-with-multiverse-time-trave
 You will be faced with a blank 5x5 go board. 
 
 * Use the `LMB` to place stones. There will be a preview of the stone you place. When you are about to make an illegal move, the preview will turn **red**.
-* Hold the `RMB` and move the mouse to drag the scene. No way to zoom (yet).
+* Hold the `RMB` and move the mouse to drag the scene. No way to zoom (yet). just `ctrl` + scroll.
 * All the special cases have been added, like ko and snapback, so the game should work mostly like normal Go
 
 ### Winning
