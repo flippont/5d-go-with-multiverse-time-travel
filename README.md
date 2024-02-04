@@ -11,7 +11,7 @@ Don't mind the ugly code. I'm bad at it and it barely works. In fact, I've compr
 
 * A modern browser
 * File explorer
-* 10 IQ
+* 10 IQ (Spamming is the best strat)
 
 ### How to Play
 
