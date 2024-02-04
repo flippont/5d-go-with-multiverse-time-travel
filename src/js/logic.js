@@ -1,3 +1,4 @@
+// Copies all elements from one board to another
 copyBoard = (board, copyBoard) => {
 	for(var i = 0; i < boardSize; i++) {
 		for(var j = 0; j < boardSize; j++) {
@@ -6,6 +7,8 @@ copyBoard = (board, copyBoard) => {
 	}
 }
 
+// clears taken stones. 
+// Checks if the linked stones without liberties are of the same colour and not the colour of the current player, and takes them.
 clearTaken = (data) => {
     for(var i = 0; i < boardSize; i++) {
 		for(var j = 0; j < boardSize; j++) {
@@ -25,6 +28,8 @@ clearTaken = (data) => {
 		}
 	}
 }
+
+// Checks for Ko-rule
 invalidBoard = (data, backup) => {
 	for(var i = 0; i < boardSize; i++) {
 		for(var j = 0; j < boardSize; j++) {
@@ -36,6 +41,7 @@ invalidBoard = (data, backup) => {
 	return true;
 }
 
+// Finds stone chains.
 getChain = () => {
 	var chain = [];
 	for(var i = 0; i < boardSize; i++) {
@@ -56,6 +62,7 @@ invalidMove = (board, x, y) => {
 	return 1;
 }
 
+// Avoid max-call stack size exceesion.
 resetCheckBoard = () => {
 	for(var i = 0; i < boardSize; i++) {
 		for(var j = 0; j < boardSize; j++) {
@@ -80,10 +87,10 @@ getLiberties = (board, x, y) => {
 		var pX = x + directs[i][0];
 		var pY = y + directs[i][1];
 
-		if(!outOfBounds(pX, pY)) { //valid position
-			if(board[pX][pY] == 0) { //1 liberty
+		if(!outOfBounds(pX, pY)) { // valid position
+			if(board[pX][pY] == 0) { // 1 liberty
 				count ++;
-			} else if(board[pX][pY] == board[x][y]) { //next chain
+			} else if(board[pX][pY] == board[x][y]) { // next chain
                 count += getLiberties(board, pX, pY);
                 checkBoard[pX][pY] = 1;
 			}
@@ -96,11 +103,10 @@ getLiberties = (board, x, y) => {
 
 newBoard = (row, collumn, data) => {
     // need to update this so the row is updated along side it.
-    present = (present == 1) ? 2 : 1
-    clearTaken(data)
-    present = (present == 1) ? 2 : 1
 
     if(triggered == true){ return false}
+
+	present = (present == 1) ? 2 : 1
     entities.sort((a, b) => {
         return a.row - b.row
     })
