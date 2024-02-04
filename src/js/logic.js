@@ -112,24 +112,24 @@ newBoard = (row, collumn, data) => {
 	})
 	let sameTime = [];
 	for(let i=0; i < entities.length; i++) {
-	if(entities[i].collumn == collumn + 1) {
-		sameTime.push(i)
-	}
-	if(i == entities.length - 1) {
-	    if(sameTime.length > 0) {
-		console.log(sameTime)
-		if(sameTime.length % 2 == 0) {
-			entities.push(new Board(collumn + 1, (sameTime.length) / 2, data));
-		} else {
-            entities.push(new Board(collumn + 1, (-1 * (sameTime.length + 1) / 2), data));
-		}
-		triggered = true
-		return false;
-	    } else {
-    		entities.push(new Board(collumn + 1, 0, data))
+    	if(entities[i].collumn == collumn + 1) {
+    		sameTime.push(i)
+    	}
+    	if(i == entities.length - 1) {
+    	    if(sameTime.length > 0) {
+    		console.log(sameTime)
+    		if(sameTime.length % 2 == 0) {
+    			entities.push(new Board(collumn + 1, (sameTime.length) / 2, data));
+    		} else {
+                entities.push(new Board(collumn + 1, (-1 * (sameTime.length + 1) / 2), data));
+    		}
     		triggered = true
     		return false;
-	    }
-	}
+    	    } else {
+        		entities.push(new Board(collumn + 1, 0, data))
+        		triggered = true
+        		return false;
+    	    }
+    	}
 	}
 }
